@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    background: #f8f8f8;
+    font-family: 'M PLUS Rounded 1c', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP', sans-serif;
+
+}
+
+* {
+    cursor: url('img/wiipointer.png'), auto !important; 
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+main ul.navigation {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin: 2.3vh auto;
+    padding: 1rem;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+main ul.navigation li {
+    position: relative;
+    overflow: hidden;
+    width: calc(25% - 0.8rem);
+    margin: 0.4rem;
+    aspect-ratio: 2 / 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 3.2px solid #ccc;
+    border-radius: 1.2rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+    padding: var(--spacing);
+    background-image: repeating-radial-gradient(circle at 14% 30%, white, rgba(0, 0, 0, 0.12) 0.0008px);
+    color: rgba(0, 0, 0, 0.6);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideIn 0.6s ease-out forwards;
+    opacity: 0;
+    cursor: pointer;
+}
+
+main ul.navigation li:hover {
+    border-color: #4A90E2;
+    box-shadow: 
+        0 5px 10px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    scale: 1.05;
+}
+
+main ul.navigation li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+main ul.navigation li:hover::before {
+    transform: translateX(100%);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main ul.navigation li:nth-child(1) { animation-delay: 0.1s; }
+main ul.navigation li:nth-child(2) { animation-delay: 0.2s; }
+main ul.navigation li:nth-child(3) { animation-delay: 0.3s; }
+main ul.navigation li:nth-child(4) { animation-delay: 0.4s; }
+main ul.navigation li:nth-child(5) { animation-delay: 0.5s; }
+main ul.navigation li:nth-child(6) { animation-delay: 0.6s; }
+main ul.navigation li:nth-child(7) { animation-delay: 0.7s; }
+main ul.navigation li:nth-child(8) { animation-delay: 0.8s; }
+main ul.navigation li:nth-child(9) { animation-delay: 0.9s; }
+main ul.navigation li:nth-child(10) { animation-delay: 1.0s; }
+main ul.navigation li:nth-child(11) { animation-delay: 1.1s; }
+main ul.navigation li:nth-child(12) { animation-delay: 1.2s; }
+
+.navigation li a {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+
+.image-overlay {
+    position: relative;
+    display: inline-block;
+}
+
+.image-overlay img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: -30px; /* Sposta la foto leggermente più in alto */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 77%; /* Sposta la scritta più in basso */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+/* Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-container {
+    position: absolute;
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.popup-container.full {
+    background: white;
+    border-radius: 3rem;
+}
+
+
+
+/* Full Screen Popup Content */
+.popup-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.popup-header {
+    background: skyblue;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+}
+
+.popup-header:before {
+    content: "";
+    background: white;
+    width: 70%;
+    top: 20px;
+    left: -1rem;
+    height: 40px;
+    padding: 1rem;
+    border-radius: 2rem;
+    position: absolute;
+}
+
+.popup-header:after {
+    background-image: radial-gradient(circle at 100% 0, transparent 0%, transparent 38px, white 40px);
+    content: "";
+    width: 40px;
+    position: absolute;
+    height: 34px;
+    left: 0;
+    margin-top: -2px;
+    margin-left: calc(70% + 10px);
+}
+
+.popup-body {
+    flex: 1;
+    padding: 2rem;
+    color: black;
+    font-size: 1.2rem;
+    background: white;
+
+}
+
+.popup-footer {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 200px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.02)), linear-gradient(to top right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.12));
+    background-size: 100% 4px, cover;
+    border-top: 2.4px solid #aaa;
+}
+
+/* Simple popup for container-3 */
+.popup-container.simple {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    width: 40%;
+    margin: 1rem 0;
+    text-align: center;
+    border-radius: 2rem;
+    display: inline-block;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-decoration: none;
+    color: #222;
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.08);
+    border: 2px solid skyblue;
+    background: #dae3e5;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #666;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    scale: 1.1;
+
+    border-color: #4A90E2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button:before {
+    content: "";
+    width: 94%;
+    left: 0;
+    top: 0px;
+    border-radius: 2rem;
+    height: 40%;
+    background: #ebecee;
+    position: absolute;
+}
+
+.button:after {
+    content: "";
+    width: 54%;
+    left: 0;
+    top: 0px;
+    border-radius: 2rem;
+    height: 100%;
+    background: #ebecee;
+    position: absolute;
+}
+
+.corner {
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 40%;
+    z-index: 1;
+    border-radius: 2rem;
+    height: 100%;
+    background: #dae3e5;
+}
+
+.text {
+    position: relative;
+    z-index: 1;
+    font-size: 3.2vh;
+c}
+
+.cancel {
+    border-radius: 1.4rem;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08), 0 0 0 4px white, 2px 2px 10px rgba(0, 0, 0, 0.2), 0 0 4px 2px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    width: 80%;
+    background: linear-gradient(to bottom, white 70%, rgba(0, 0, 0, 0.2));
+}
+
+li:empty:after {
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.12;
+    content: "Wii";
+    font-weight: bold;
+}
+
+li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    object-position: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 170px;
+    filter: drop-shadow(3px 0px 0px skyblue) drop-shadow(-3px 0px 0px skyblue) drop-shadow(0px -3px 0px skyblue);
+}
+
+.c {
+    width: 33%;
+    height: 200px;
+    border-radius: 3rem;
+    background: #bbb;
+    left: -5%;
+    position: absolute;
+}
+
+.c:nth-of-type(2) {
+    left: auto;
+    right: -5%;
+}
+
+.c:after {
+    background-image: radial-gradient(circle at 100% 0, transparent 0%, transparent 100px, #bbb 100px);
+    content: "";
+    width: 100px;
+    position: absolute;
+    height: 80px;
+    transform: scale(0.8);
+    right: -84.2px;
+    margin-top: 8px;
+}
+
+.c:nth-of-type(2):after {
+    right: auto;
+    left: -84.2px;
+    transform: scale(0.8) scaleX(-1);
+}
+
+.m {
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0.02)), linear-gradient(to bottom, #bbb, #f5f5f5);
+    position: absolute;
+    top: 40%;
+    background-size: 100% 8px, cover;
+}
+
+.bottom-text {
+    position: absolute;
+    width: 250px;
+    bottom: 1rem;
+    z-index: 1;
+    padding: 2rem;
+    text-align: center;
+    left: 50%;
+    margin-left: -125px;
+    font-weight: bold;
+    color: #666;
+    font-size: 5vh;
+}
+
+.button-cont {
+    position: absolute;
+    width: 200px;
+    left: 0;
+    z-index: 1;
+    margin-left: -50px;
+    padding: 1rem;
+    padding-left: 200px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6rem;
+    display: flex;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
+    align-items: center;
+}
+
+.button-cont.right-side {
+    left: auto;
+    right: -40px;
+    padding-left: 1rem;
+    padding-right: 200px;
+}
+
+.button-cont.right-side .button {
+    margin-left: 1rem;
+}
+
+.button-cont .button {
+    min-width: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    transform: scale(1.2);
+    align-items: center;
+    border-radius: 100%;
+    height: 70px;
+    border-width: 4px;
+    margin-left: -100px;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.08);
+}
+
+.real-time-clock {
+    position: absolute;
+    bottom: 7rem; /* Posiziona sopra la data */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+
+/* FACCIA CHE RUOTA */
+
+.rotating-image {
+    width: 40px; /* Dimensione dell'immagine */
+    height: 40px;
+    animation: spin 2s linear infinite; /* Rotazione continua */
+    position: relative; /* Necessario per applicare z-index */
+    z-index: 1000; /* Porta l'immagine in primo piano */
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Animazione coriandoli a schermo intero */
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffcc00; /* Colore dei coriandoli */
+    border-radius: 50%;
+    animation: fall 5s ease-out forwards; /* Durata dell'animazione ridotta a 5 secondi */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50vh) rotate(0deg); /* Partono da più in alto */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+
+/* Drag and Drop */
+

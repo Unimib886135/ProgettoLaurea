@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Selector</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            padding: 20px;
+        }
+
+        .team-selector {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-selector h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        /* Slot della squadra */
+        .team-slots {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .slot {
+            width: 120px;
+            height: 120px;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .slot.drag-over {
+            border-color: #4A90E2;
+            background: #e8f4ff;
+            transform: scale(1.05);
+        }
+
+        .slot.filled {
+            border-color: #4A90E2;
+            background: #fff;
+            border-style: solid;
+        }
+
+        .slot .placeholder {
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .slot .remove-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            display: none;
+            z-index: 10;
+        }
+
+        .slot.filled .remove-btn {
+            display: block;
+        }
+
+        .slot .remove-btn:hover {
+            background: #ff3838;
+            transform: scale(1.1);
+        }
+
+        /* Collezione di immagini */
+        .image-collection {
+            border-top: 2px solid #eee;
+            padding-top: 30px;
+        }
+
+        .collection-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .images-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .image-item {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            border-color: #4A90E2;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .image-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+            transform: rotate(5deg);
+        }
+
+        .image-item.used {
+            opacity: 0.4;
+            border-color: #999;
+        }
+
+        .image-item.used::after {
+            content: "✓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(74, 144, 226, 0.9);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Pulsanti di controllo */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f1f1f1;
+            color: #666;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Animazioni */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .image-item {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .team-slots {
+                gap: 10px;
+            }
+            
+            .slot {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .image-item {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .team-selector {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="team-selector">
+        <h2>Seleziona la tua squadra</h2>
+        
+        <!-- Slot della squadra -->
+        <div class="team-slots">
+            <div class="slot" data-slot="0">
+                <div class="placeholder">Slot 1</div>
+                <button class="remove-btn" onclick="removeFromSlot(0)">×</button>
+            </div>
+            <div class="slot" data-slot="1">
+                <div class="placeholder">Slot 2</div>
+                <button class="remove-btn" onclick="removeFromSlot(1)">×</button>
+            </div>
+            <div class="slot" data-slot="2">
+                <div class="placeholder">Slot 3</div>
+                <button class="remove-btn" onclick="removeFromSlot(2)">×</button>
+            </div>
+            <div class="slot" data-slot="3">
+                <div class="placeholder">Slot 4</div>
+                <button class="remove-btn" onclick="removeFromSlot(3)">×</button>
+            </div>
+        </div>
+
+        <!-- Collezione di immagini -->
+        <div class="image-collection">
+            <h3 class="collection-title">Scegli dalle immagini disponibili</h3>
+            <div class="images-grid" id="imagesGrid">
+                <!-- Le immagini verranno generate dinamicamente -->
+            </div>
+        </div>
+
+        <!-- Controlli -->
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="clearTeam()">Pulisci tutto</button>
+            <button class="btn btn-primary" onclick="confirmTeam()" id="confirmBtn" disabled>Conferma squadra</button>
+        </div>
+    </div>
+
+    <script>
+        // Dati delle immagini (puoi sostituire con le tue immagini)
+        const images = [
+            { id: 1, src: 'https://picsum.photos/100/100?random=1', name: 'Immagine 1' },
+            { id: 2, src: 'https://picsum.photos/100/100?random=2', name: 'Immagine 2' },
+            { id: 3, src: 'https://picsum.photos/100/100?random=3', name: 'Immagine 3' },
+            { id: 4, src: 'https://picsum.photos/100/100?random=4', name: 'Immagine 4' },
+            { id: 5, src: 'https://picsum.photos/100/100?random=5', name: 'Immagine 5' },
+            { id: 6, src: 'https://picsum.photos/100/100?random=6', name: 'Immagine 6' },
+            { id: 7, src: 'https://picsum.photos/100/100?random=7', name: 'Immagine 7' },
+            { id: 8, src: 'https://picsum.photos/100/100?random=8', name: 'Immagine 8' },
+            { id: 9, src: 'https://picsum.photos/100/100?random=9', name: 'Immagine 9' },
+            { id: 10, src: 'https://picsum.photos/100/100?random=10', name: 'Immagine 10' }
+        ];
+
+        let selectedTeam = [null, null, null, null]; // Array per memorizzare la squadra
+        let draggedImage = null;
+
+        // Inizializza la griglia delle immagini
+        function initializeImages() {
+            const grid = document.getElementById('imagesGrid');
+            grid.innerHTML = '';
+
+            images.forEach((image, index) => {
+                const imageElement = document.createElement('div');
+                imageElement.className = 'image-item';
+                imageElement.draggable = true;
+                imageElement.dataset.imageId = image.id;
+                imageElement.style.animationDelay = `${index * 0.1}s`;
+                
+                imageElement.innerHTML = `<img src="${image.src}" alt="${image.name}" draggable="false">`;
+                
+                // Event listeners per il drag & drop
+                imageElement.addEventListener('dragstart', handleDragStart);
+                imageElement.addEventListener('dragend', handleDragEnd);
+                imageElement.addEventListener('click', handleImageClick);
+                
+                grid.appendChild(imageElement);
+            });
+        }
+
+        // Inizializza gli slot
+        function initializeSlots() {
+            const slots = document.querySelectorAll('.slot');
+            slots.forEach(slot => {
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('drop', handleDrop);
+                slot.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        // Gestione del drag start
+        function handleDragStart(e) {
+            draggedImage = {
+                id: parseInt(e.target.dataset.imageId || e.target.parentElement.dataset.imageId),
+                element: e.target.classList.contains('image-item') ? e.target : e.target.parentElement
+            };
+            draggedImage.element.classList.add('dragging');
+        }
+
+        // Gestione del drag end
+        function handleDragEnd(e) {
+            if (draggedImage) {
+                draggedImage.element.classList.remove('dragging');
+                draggedImage = null;
+            }
+        }
+
+        // Gestione del drag over
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        // Gestione del drag leave
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        // Gestione del drop
+        function handleDrop(e) {
+            e.preventDefault();
+            const slot = e.currentTarget;
+            slot.classList.remove('drag-over');
+            
+            if (draggedImage) {
+                const slotIndex = parseInt(slot.dataset.slot);
+                addToSlot(slotIndex, draggedImage.id);
+            }
+        }
+
+        // Click sull'immagine per selezione rapida
+        function handleImageClick(e) {
+            const imageId = parseInt(e.target.dataset.imageId || e.target.parentElement.dataset.imageId);
+            
+            // Trova il primo slot disponibile
+            const emptySlotIndex = selectedTeam.findIndex(slot => slot === null);
+            if (emptySlotIndex !== -1) {
+                addToSlot(emptySlotIndex, imageId);
+            }
+        }
+
+        // Aggiungi immagine allo slot
+        function addToSlot(slotIndex, imageId) {
+            // Controlla se l'immagine è già utilizzata
+            if (selectedTeam.includes(imageId)) {
+                return;
+            }
+
+            // Rimuovi l'immagine precedente dallo slot se presente
+            if (selectedTeam[slotIndex] !== null) {
+                removeFromSlot(slotIndex);
+            }
+
+            // Aggiungi la nuova immagine
+            selectedTeam[slotIndex] = imageId;
+            const image = images.find(img => img.id === imageId);
+            const slot = document.querySelector(`[data-slot="${slotIndex}"]`);
+            
+            slot.innerHTML = `
+                <img src="${image.src}" alt="${image.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                <button class="remove-btn" onclick="removeFromSlot(${slotIndex})">×</button>
+            `;
+            slot.classList.add('filled');
+            
+            updateImageStates();
+            updateConfirmButton();
+        }
+
+        // Rimuovi immagine dallo slot
+        function removeFromSlot(slotIndex) {
+            selectedTeam[slotIndex] = null;
+            const slot = document.querySelector(`[data-slot="${slotIndex}"]`);
+            
+            slot.innerHTML = `
+                <div class="placeholder">Slot ${slotIndex + 1}</div>
+                <button class="remove-btn" onclick="removeFromSlot(${slotIndex})">×</button>
+            `;
+            slot.classList.remove('filled');
+            
+            updateImageStates();
+            updateConfirmButton();
+        }
+
+        // Aggiorna lo stato visivo delle immagini
+        function updateImageStates() {
+            const imageElements = document.querySelectorAll('.image-item');
+            imageElements.forEach(element => {
+                const imageId = parseInt(element.dataset.imageId);
+                if (selectedTeam.includes(imageId)) {
+                    element.classList.add('used');
+                } else {
+                    element.classList.remove('used');
+                }
+            });
+        }
+
+        // Aggiorna il pulsante di conferma
+        function updateConfirmButton() {
+            const confirmBtn = document.getElementById('confirmBtn');
+            const filledSlots = selectedTeam.filter(slot => slot !== null).length;
+            confirmBtn.disabled = filledSlots === 0;
+            confirmBtn.textContent = `Conferma squadra (${filledSlots}/4)`;
+        }
+
+        // Pulisci tutta la squadra
+        function clearTeam() {
+            selectedTeam = [null, null, null, null];
+            const slots = document.querySelectorAll('.slot');
+            slots.forEach((slot, index) => {
+                slot.innerHTML = `
+                    <div class="placeholder">Slot ${index + 1}</div>
+                    <button class="remove-btn" onclick="removeFromSlot(${index})">×</button>
+                `;
+                slot.classList.remove('filled');
+            });
+            updateImageStates();
+            updateConfirmButton();
+        }
+
+        // Conferma la squadra
+        function confirmTeam() {
+            const selectedImages = selectedTeam.filter(id => id !== null);
+            if (selectedImages.length === 0) {
+                alert('Seleziona almeno un\'immagine per la squadra!');
+                return;
+            }
+            
+            const teamNames = selectedImages.map(id => {
+                const image = images.find(img => img.id === id);
+                return image.name;
+            });
+            
+            alert(`Squadra confermata!\nImmagini selezionate: ${teamNames.join(', ')}`);
+            console.log('Squadra selezionata:', selectedImages);
+        }
+
+        // Inizializza l'applicazione
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeImages();
+            initializeSlots();
+            updateConfirmButton();
+        });
+    </script>
+</body>
+</html>

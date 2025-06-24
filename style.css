@@ -19,9 +19,9 @@ a {
 
 main ul.navigation {
     display: flex;
-    width: 90%;
-    max-width: 1200px;
-    margin: 2.3vh auto;
+    width: 100%;
+    max-width: 1240px;
+    margin: 2vh auto;
     padding: 1rem;
     flex-wrap: wrap;
     list-style-type: none;
@@ -120,7 +120,7 @@ main ul.navigation li:nth-child(12) { animation-delay: 1.2s; }
     display: block;
     width: 100%;
     height: auto;
-    margin-top: -30px; /* Sposta la foto leggermente più in alto */
+    margin-top: -5px; /* Sposta la foto leggermente più in alto */
 }
 
 .overlay-text {
@@ -164,7 +164,7 @@ main ul.navigation li:nth-child(12) { animation-delay: 1.2s; }
 
 .popup-container.full {
     background: white;
-    border-radius: 3rem;
+    border-radius: 2rem;
 }
 
 
@@ -258,7 +258,6 @@ main ul.navigation li:nth-child(12) { animation-delay: 1.2s; }
 }
 
 .button:hover {
-    transform: scale(1.1);
     scale: 1.1;
 
     border-color: #4A90E2;
@@ -302,8 +301,9 @@ main ul.navigation li:nth-child(12) { animation-delay: 1.2s; }
 .text {
     position: relative;
     z-index: 1;
-    font-size: 3.2vh;
-c}
+    font-size: 5vh;
+    color: #afafaf;
+}
 
 .cancel {
     border-radius: 1.4rem;
@@ -350,7 +350,7 @@ footer {
 
 .c {
     width: 33%;
-    height: 200px;
+    height: 180px;
     border-radius: 3rem;
     background: #bbb;
     left: -5%;
@@ -408,7 +408,7 @@ footer {
     left: 0;
     z-index: 1;
     margin-left: -50px;
-    padding: 1rem;
+    padding: 0.5rem;
     padding-left: 200px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 6rem;
@@ -429,28 +429,29 @@ footer {
 }
 
 .button-cont .button {
-    min-width: 80px;
+    min-width: 100px;
     text-align: center;
     display: flex;
     justify-content: center;
     transform: scale(1.2);
     align-items: center;
     border-radius: 100%;
-    height: 70px;
+    height: 100px;
     border-width: 4px;
-    margin-left: -100px;
+    margin-left: -110px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.08);
 }
 
 .real-time-clock {
     position: absolute;
-    bottom: 7rem; /* Posiziona sopra la data */
+    bottom: 6rem; /* Posiziona sopra la data */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 3rem;
+    font-size: 3.4rem;
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+    color: #9b9b9b;
 }
 
 
@@ -494,8 +495,4 @@ footer {
         opacity: 0;
     }
 }
-
-
-
-/* Drag and Drop */
 

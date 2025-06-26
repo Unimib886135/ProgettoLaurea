@@ -29,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="popup-footer">
                         <a href="javascript:void(0)" class="button close-popup">
                             <span class="corner"></span>
-                            <span class="text">Indietro</span>
+                            <span class="text-buttonarea ">Indietro</span>
                         </a>
                         <a href="javascript:void(0)" class="button">
                             <span class="corner"></span>
-                            <span class="text">Completato</span>
+                            <span class="text-buttonarea ">Completato</span>
                         </a>
                     </div>
                 </div>
@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="popup-footer">
                         <a href="javascript:void(0)" class="button close-popup">
                             <span class="corner"></span>
-                            <span class="text">Indietro</span>
+                            <span class="text-buttonarea">Indietro</span>
                         </a>
                         <a href="javascript:void(0)" class="button">
                             <span class="corner"></span>
-                            <span class="text">Inizia</span>
+                            <span class="text-buttonarea">Inizia</span>
                         </a>
                     </div>
                 </div>

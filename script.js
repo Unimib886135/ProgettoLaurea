@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="popup-content">
                     <div class="popup-header"></div>
                     <div class="popup-body">
-                        <h2>Sarabanda</h2>
-                        <p>Sarabanda è un gioco musicale in cui i partecipanti si sfidano nel riconoscere titoli di canzoni e artisti nel minor tempo possibile.</p>
-                        <p>Ogni round presenta una breve melodia, e il primo che indovina correttamente guadagna punti. Il gioco è perfetto per gli amanti della musica e per creare un'atmosfera divertente e competitiva tra amici.</p>
-                        <p>Preparati a mettere alla prova la tua conoscenza musicale e a divertirti con sfide emozionanti!</p>
+                        <h1>Wii Sports</h1>
+                        <p>Preparatevi a mettere alla prova la vostra mira e la vostra sobrietà. Entrambe indosserete la  cintura di birre e dovrete cercare di fare canestro lanciando tappi, palline o qualsiasi cosa capiti a tiro.</p>
+                        <p>L’obiettivo? Centrare i bicchieri senza rovesciare tutto — o l’equilibrio mentale. Serve precisione, sangue freddo e un minimo di autocontrollo… che sappiamo già andrà perso dopo pochi minuti.</p>
+                        <p>Che vinca il migliore — o almeno, chi fa meno danni.</p>
                     </div>
                     <div class="popup-footer">
                         <a href="javascript:void(0)" class="button close-popup">
@@ -39,28 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },      //tetst
+
         'container-2': {
             type: 'full',
             content: `
                 <div class="popup-content">
                     <div class="popup-header"></div>
                     <div class="popup-body">
-                        <h2>Canale Mii</h2>
-                        <p>Crea e personalizza i tuoi Mii! Progetta avatar unici che ti rappresentano.</p>
-                        <p>Puoi usare i tuoi Mii in vari giochi e condividerli con gli amici.</p>
-                        <ul style="text-align: left; margin-top: 2rem;">
-                            <li>Crea nuovo Mii</li>
-                            <li>Modifica Mii esistenti</li>
-                            <li>Gestisci la Mii Plaza</li>
-                            <li>Condividi con gli amici</li>
-                        </ul>
+                        <h1>Karaoke Party</h1>
+                        <p>Signore e signore, ecco a voi la sfida vocale definitiva, ma con un piccolo dettaglio: sarete girate di spalle e non potrete leggere il testo. Le lyrics scorreranno davanti a tutti, tranne che a voi.</p>
+                        <p>La canzone parte, il pubblico osserva, e voi dovrete affidarvi alla memoria, all’intuito e a quel ritornello che pensavate di conoscere bene.</p>
+                        <p>Una prova di coraggio più che di canto. E sì, le stecche sono garantite.</p>
                     </div>
                     <div class="popup-footer">
                         <a href="javascript:void(0)" class="button close-popup">
                             <span class="corner"></span>
                             <span class="text-buttonarea">Indietro</span>
                         </a>
-                        <a href="javascript:void(0)" class="button">
+                        <a href="https://www.youtube.com/feed/playlists" target="_blank" class="button">
                             <span class="corner"></span>
                             <span class="text-buttonarea">Inizia</span>
                         </a>
@@ -68,13 +64,251 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },
+        
         'container-3': {
-            type: 'simple',
+            type: 'full',
             content: `
-                <h2>Wii Shop Channel</h2>
-                <p>Il servizio Wii Shop Channel non è più disponibile dal 30 gennaio 2019.</p>
-                <p>Grazie per aver utilizzato questo servizio durante tutti questi anni!</p>
-                <a href="javascript:void(0)" class="cancel close-popup">Chiudi</a>
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Le So Tutte</h1>
+                        <p>Mettete alla prova le vostre conoscenze in questo quiz interattivo diviso in due fasi! </p>
+                        <p>Prima le protagoniste si sfideranno con domande di cultura generale, poi tutti gli invitati gareggiano su domande personali sulle festeggiate.</p>
+                        <p>Partecipate tutti alla lobby di Kahoot e selezionate il più rapidamente possibile la risposta corretta per vincere. <br>Chi farà più punti vincerà una siga a testa dalle festeggiate da fumare al sole!</p>
+                        <p></p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="https://create.kahoot.it/my-library/kahoots/af12a288-f1bd-4fe6-8693-d01da84db007" target="_blank" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea">Inizia</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-4': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Wii Mario Kart</h1>
+                        <p>Salta a bordo della tua cariola e preparati alla corsa più divertente della festa! Le protagoniste scelgono il loro pilota personale e si lanciano in un percorso pieno di curve e ostacoli.</p>
+                        <p>La comunicazione tra pilota e passeggero sarà fondamentale per navigare le sfide del percorso. Attenzione ai power-up nascosti lungo la strada che potrebbero cambiare le sorti della gara! Solo il team più veloce si porterà a casa la vittoria.</p>
+                        <p>Preparati per un'esperienza di corsa unica che combina velocità, strategia e tanto divertimento!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="https://svegliaonline.it/cronometro/#" target="_blank" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Inizia</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-5': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Super Mario Bros Wii</h1>
+                        <p>Entra nel mondo di Super Mario come mai prima d'ora! Le protagoniste dovranno affrontare un percorso a ostacoli ispirato al loro classico sabato sera tra drink e ssiga. 
+                        <p>Dovete completare il percorso a ostacoli con in una mano una sigaretta e nell'altra un bicchiere pieno. La prima che ritorna al suo trono sarà la nuova Peach della festa, quella che perde dovrà vedersela con Bowser. </p>
+                        <p>Preparati per un'avventura che celebra lo stile di vita unico di Elisa e Nicole!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-6': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Wii Party</h1>
+                        <p>Sarebbe proprio l'ora di una pausa siga...ma dove sono finiti i vostri pacchetti?</p>
+                        <p>Proprio come nella Caccio al Tesoro di Wii Party dovrete trovare il VOSTRO pacchetto di siga nascosto all'interno della cucina.</p>
+                        <p>La prima che uscirà con il proprio pacchetto sarà la vincitrice si potrà godere la propria amata pausa siga!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-7': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Wii Music</h1>
+                        <p>Preparatevi per la sfida musicale più divertente della festa! Elisa e Nicole dovete scegliere le canzoni da far indovinare agli invitati in questa versione speciale della Sarabanda.</p>
+                        <p>Ogni canzone indovinata dagli ospiti scatena un brindisi collettivo che aumenta il divertimento! Le festeggiate hanno il controllo totale della playlist, decidendo strategicamente quali brani proporre per mettere alla prova le conoscenze musicali degli amici.</p>
+                        <p>Dalle hit del momento ai classici intramontabili, ogni scelta può essere vincente!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-8': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Wii Sport Resort</h1>
+                        <p>Se sei una Baddie ti fai uno SHOT!</p>
+                        <p>Se sei Laureata ti fai uno SHOT!</p>
+                        <p>Se vuoi continuare ti fai uno SHOT!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-9': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Just Dance 3</h1>
+                        <p>E' ora di mettere alla prova le vostre doti da ballerine, come nei classici JustDance seguite al vostro meglio la coreografia (chi non balla vada in esilio nel recinto delle galline).</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=NJh5idlanrc&list=RDNJh5idlanrc&start_radio=1" target="_blank" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Inizia</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-10': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Wii Wurstel</h1>
+                        <p>Preparatevi per la sfida gastronomica più divertente e competitiva della festa!</p>
+                        <p>Elisa e Nicole dovete affrontare il wurstel appeso a un filo di spago legato in vita usando solo la bocca. Senza l'uso delle mani, dovrete divorare completamente il vostro wurstel oscillante prima dell'avversaria! La sfida richiede coordinazione, determinazione e una buona dose di pazienza mentre il wurstel dondola davanti al vostro viso.</p>
+                        <p>Preparatevi per una competizione esilarante che metterà alla prova le vostre abilità di masticazione e la vostra voglia di vincere!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-11': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Cruciverba</h2>
+                        <p>Preparatevi per la sfida di logica più personalizzata della festa! </p>
+                        <p>Elisa e Nicole dovete completare un cruciverba speciale creato appositamente per voi con riferimenti alla vostra vita. </p>
+                        <p>Preparatevi per una gara di intelligenza che celebra il vostro percorso personale e la vostra amicizia!</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+
+        'container-12': {
+            type: 'full',
+            content: `
+                <div class="popup-content">
+                    <div class="popup-header"></div>
+                    <div class="popup-body">
+                        <h1>Aprite i Regali</h1>
+                        <p>REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI - REGALI</p>
+                    </div>
+                    <div class="popup-footer">
+                        <a href="javascript:void(0)" class="button close-popup">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Indietro</span>
+                        </a>
+                        <a href="javascript:void(0)" class="button">
+                            <span class="corner"></span>
+                            <span class="text-buttonarea ">Completato</span>
+                        </a>
+                    </div>
+                </div>
             `
         }
     };
